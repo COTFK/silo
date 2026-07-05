@@ -1,0 +1,12 @@
+name: silo
+
+services:
+  server:
+    build: .
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: rebuild
+          path: ./src
+    # env_file: .env
