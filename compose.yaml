@@ -1,4 +1,4 @@
-name: silo
+name: courtier
 
 services:
   server:

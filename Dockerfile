@@ -30,12 +30,12 @@ FROM debian:trixie-slim AS runtime
 RUN apt-get update && apt-get install -y ca-certificates procps && rm -rf /var/lib/apt/lists/*
 
 # Copy bot binary
-COPY --from=builder /app/target/release/silo /usr/local/bin/silo
+COPY --from=builder /app/target/release/courtier /usr/local/bin/courtier
 
 EXPOSE 3000
 
 # Simple health check: verify process is running
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD pgrep -f silo > /dev/null || exit 1
+  CMD pgrep -f courtier > /dev/null || exit 1
 
-ENTRYPOINT [ "/usr/local/bin/silo" ]
+ENTRYPOINT [ "/usr/local/bin/courtier" ]
